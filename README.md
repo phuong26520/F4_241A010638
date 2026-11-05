@@ -24,9 +24,17 @@ Các chức năng đã làm
 
 Bài nâng cao đã làm
 
-NC1: Thêm ô tìm kiếm liên hệ theo tên hoặc số điện thoại.
+NC1 - Tìm kiếm liên hệ
 
-NC2: Thêm hiệu ứng Hero cho ảnh đại diện khi mở màn hình Chi tiết.
+Bài yêu cầu thêm một màn hình tìm kiếm và trả liên hệ được chọn về màn hình danh sách. Mình tạo ContactSearchPage, truyền danh sách liên hệ vào màn hình này bằng constructor. Trong màn hình tìm kiếm có TextField; mỗi lần nhập, onChanged cập nhật từ khóa rồi lọc danh sách theo họ tên hoặc số điện thoại. Kết quả được hiển thị bằng các ListTile.
+
+Khi bấm một liên hệ, ContactSearchPage dùng Navigator.pop(context, contact) để trả liên hệ đã chọn về màn hình trước. Ở ContactListPage, hàm _timKiem dùng await Navigator.push<Contact>(...) để chờ kết quả. Nếu kết quả khác null và màn hình vẫn còn hoạt động, chương trình tìm vị trí liên hệ trong danh sách rồi mở màn hình Chi tiết của liên hệ đó.
+
+NC2 - Hiệu ứng Hero cho ảnh đại diện
+
+Bài yêu cầu tạo hiệu ứng ảnh đại diện chuyển từ màn hình Danh sách sang màn hình Chi tiết. Ở mỗi dòng trong ContactListPage, CircleAvatar được đặt bên trong Hero với tag là số điện thoại của liên hệ. Ở ContactDetailPage cũng có một CircleAvatar đặt trong Hero và dùng đúng tag đó.
+
+Khi hai Hero ở hai màn hình có cùng tag, Flutter tự tạo hiệu ứng chuyển ảnh đại diện khi mở Chi tiết và khi bấm Back quay lại. Số điện thoại được dùng làm tag vì mỗi liên hệ có một giá trị riêng.
 
 Cách chạy
 
